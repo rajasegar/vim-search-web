@@ -1,6 +1,6 @@
 " vim-search-web.vim - Search keywords in vim from various sources
 " Maintainer: Rajasegar Chandran <rajasegar.c@gmail.com>
-" Version: 0.1
+" Version: 0.2
 
 
 " Mappings
@@ -32,3 +32,9 @@ function! OpenNpmSearch(keyword)
   let url = 'https://npmjs.com/search?q='.a:keyword
   exec '!open "'.url.'"'
 endfunction
+
+" Commands
+command! OpenGoogleSearch call OpenGoogleSearch()
+command! OpenGithubSearch call OpenGithubSearch()
+command! OpenStackOverflowSearch call OpenStackOverflowSearch()
+command! OpenNpmSearch call OpenNpmSearch()
