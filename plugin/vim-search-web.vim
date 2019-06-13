@@ -34,7 +34,7 @@ function! OpenNpmSearch(keyword)
 endfunction
 
 " Commands
-command! OpenGoogleSearch call OpenGoogleSearch()
-command! OpenGithubSearch call OpenGithubSearch()
-command! OpenStackOverflowSearch call OpenStackOverflowSearch()
-command! OpenNpmSearch call OpenNpmSearch()
+command! -nargs=1 OpenGoogleSearch call OpenGoogleSearch(<args>)
+command! -nargs=1 OpenGithubSearch call OpenGithubSearch(<args>)
+command! -nargs=1 OpenStackOverflowSearch call OpenStackOverflowSearch(<args>)
+command! -nargs=1 OpenNpmSearch call OpenNpmSearch(<args>)
