@@ -1,3 +1,8 @@
+" vim-search-web.vim - Search keywords in vim from various sources
+" Maintainer: Rajasegar Chandran <rajasegar.c@gmail.com>
+" Version: 0.1
+
+
 " Mappings
 nnoremap <leader>sw :call OpenGoogleSearch(expand('<cword>')) <CR>
 nnoremap <leader>sg :call OpenGithubSearch(expand('<cword>')) <CR>
