@@ -2,6 +2,12 @@
 
 Search the web from your Vim editor
 
+## Usage
+Just place the cursor on any word about which you want to search and use
+the key binding `<Leader>sw`.
+
+That's all, now a separate browser window will open with your search results.
+
 
 ## Key Bindings
 - [Leader]sw => Google Search

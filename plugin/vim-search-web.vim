@@ -1,6 +1,6 @@
 " vim-search-web.vim - Search keywords in vim from various sources
 " Maintainer: Rajasegar Chandran <rajasegar.c@gmail.com>
-" Version: 0.2
+" Version: 0.3
 
 
 " Mappings
