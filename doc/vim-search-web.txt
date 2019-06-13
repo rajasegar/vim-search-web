@@ -23,6 +23,12 @@ that are part of Git repositories).
                                         *vim-search-web-:OpenGithubSearch*
 :OpenGitHubSearch [args]              Search using Github
 
+                                        *vim-search-web-:OpenStackOverflowSearch*
+:OpenStackOverflowSearch [args]              Search using StackOverflow
+
+                                        *vim-search-web-:OpenNpmSearch*
+:OpenNpmSearch [args]              Search using npm
+
 MAPPINGS                                        *vim-search-web-mappings*
 
 
@@ -34,6 +40,12 @@ Global mappings ~
 
                                                 *vim-search-web_LEADER_sg
 <Leader>sg              Github Search
+
+                                                *vim-search-web_LEADER_ss
+<Leader>ss              StackOverflow Search
+
+                                                *vim-search-web_LEADER_sn
+<Leader>sn              npm Search
 
 ABOUT                                           *vim-search-web-about*
 
