@@ -23,16 +23,20 @@ Plugin 'rajasegar/vim-search-web'
 
 ## Usage
 Just place the cursor on any word about which you want to search and use
-the key binding `<Leader>sw`.
+the key binding `<Leader>sg`.
 
 That's all, now a separate browser window will open with your search results.
 
 
 ## Key Bindings
-- [Leader]sw => Google Search
-- [Leader]sg => Github Search
-- [Leader]ss => StackOverflow Search
-- [Leader]sn => npm Search
+- [Leader]sd  => DuckduckGo Search
+- [Leader]sg  => Google Search
+- [Leader]sgi => Github Search
+- [Leader]ss  => StackOverflow Search
+- [Leader]sn  => npm Search
+- [Leader]sw  => Wikipedia Search
+- [Leader]sr  => reddit Search
+- [Leader]st  => Thesaurus Search
 
 ## FAQS
 
@@ -43,10 +47,6 @@ So if you want to include hypens also in your search keywords, just add them(tem
 ```sh
 :set iskeyword+=-
 ```
-
-## Upcoming sources
-- Wikipedia
-- Thesaurus
 
 ## Other Similar plugins
  - https://github.com/szw/vim-g
