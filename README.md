@@ -38,6 +38,19 @@ That's all, now a separate browser window will open with your search results.
 - [Leader]sr  => reddit Search
 - [Leader]st  => Thesaurus Search
 
+
+## Configuration
+
+There are just a few global variables (options) you may set in the *.vimrc* file.
+
+* `g:vsw_open_command`
+
+  Sets the command used to open the URL. In case of Ubuntu this would be
+  `"xdg-open"`:
+
+        let g:vsw_open_command = "xdg-open"
+
+
 ## FAQS
 
 ### Not able to search keywords with '-' (hyphens)

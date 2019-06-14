@@ -60,7 +60,7 @@ function! OpenNpmSearch(keyword)
 endfunction
 
 function! OpenWikipediaSearch(keyword)
-  let url = 'https://wikipedia.com/w/'.a:keyword
+  let url = 'http://wikipedia.com/w/'.a:keyword
   exec '!'.g:vsw_open_command.' "'.url.'"'
 endfunction
 
