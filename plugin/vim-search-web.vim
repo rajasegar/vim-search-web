@@ -15,15 +15,15 @@ nnoremap <leader>sld    :call OpenSearch("dictionary",expand('<cword>')) <CR>
 nnoremap <leader>sw     :call OpenSearch("wikipedia",expand('<cword>')) <CR>
 
 let s:engines = {
- \ 'duckduckgo': 'https://duckduckgo.com/?q=',
- \ "google":'https://google.com/search?q=',
- \ "github":'https://github.com/search?q=',
- \ "stackoverflow":'https://stackoverflow.com/search?q=',
- \ "npm":'https://npmjs.com/search?q=',
- \ "wikipedia":'http://wikipedia.com/w/',
- \ "reddit":'https://www.reddit.com/search/?q=',
- \ "thesaurus":'https://www.thesaurus.com/browse/',
- \ "dictionary":'http://www.learnersdictionary.com/definition/',
+ \ 'duckduckgo':    'https://duckduckgo.com/?q=',
+ \ "google":        'https://google.com/search?q=',
+ \ "github":        'https://github.com/search?q=',
+ \ "stackoverflow": 'https://stackoverflow.com/search?q=',
+ \ "npm":           'https://npmjs.com/search?q=',
+ \ "wikipedia":     'http://wikipedia.com/w/',
+ \ "reddit":        'https://www.reddit.com/search/?q=',
+ \ "thesaurus":     'https://www.thesaurus.com/browse/',
+ \ "dictionary":    'http://www.learnersdictionary.com/definition/',
  \ }
 
 if exists("g:loaded_vim_search_web") || &cp || v:version < 700
