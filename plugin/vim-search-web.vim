@@ -4,14 +4,27 @@
 
 
 " Mappings
-nnoremap <leader>sd :call OpenDuckduckGoSearch(expand('<cword>')) <CR>
-nnoremap <leader>sg :call OpenGoogleSearch(expand('<cword>')) <CR>
-nnoremap <leader>sgi :call OpenGithubSearch(expand('<cword>')) <CR>
-nnoremap <leader>sn :call OpenNpmSearch(expand('<cword>')) <CR>
-nnoremap <leader>sr :call OpenRedditSearch(expand('<cword>')) <CR>
-nnoremap <leader>ss :call OpenStackOverflowSearch(expand('<cword>')) <CR>
-nnoremap <leader>st :call OpenThesaurusSearch(expand('<cword>')) <CR>
-nnoremap <leader>sw :call OpenWikipediaSearch(expand('<cword>')) <CR>
+nnoremap <leader>sd     :call OpenSearch("duckduckgo",expand('<cword>')) <CR>
+nnoremap <leader>sg     :call OpenSearch("google",expand('<cword>')) <CR>
+nnoremap <leader>sgi    :call OpenSearch("github",expand('<cword>')) <CR>
+nnoremap <leader>sn     :call OpenSearch("npm",expand('<cword>')) <CR>
+nnoremap <leader>sr     :call OpenSearch("reddit",expand('<cword>')) <CR>
+nnoremap <leader>ss     :call OpenSearch("stackoverflow",expand('<cword>')) <CR>
+nnoremap <leader>st     :call OpenSearch("thesaurus",expand('<cword>')) <CR>
+nnoremap <leader>sld    :call OpenSearch("dictionary",expand('<cword>')) <CR>
+nnoremap <leader>sw     :call OpenSearch("wikipedia",expand('<cword>')) <CR>
+
+let s:engines = {
+ \ 'duckduckgo': 'https://duckduckgo.com/?q=',
+ \ "google":'https://google.com/search?q=',
+ \ "github":'https://github.com/search?q=',
+ \ "stackoverflow":'https://stackoverflow.com/search?q=',
+ \ "npm":'https://npmjs.com/search?q=',
+ \ "wikipedia":'http://wikipedia.com/w/',
+ \ "reddit":'https://www.reddit.com/search/?q=',
+ \ "thesaurus":'https://www.thesaurus.com/browse/',
+ \ "dictionary":'http://www.learnersdictionary.com/definition/',
+ \ }
 
 if exists("g:loaded_vim_search_web") || &cp || v:version < 700
   finish
@@ -33,53 +46,20 @@ endif
 
 
 " Functions
-function! OpenDuckduckGoSearch(keyword)
-  let url = 'https://duckduckgo.com/?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenGoogleSearch(keyword)
-  let url = 'https://google.com/search?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenGithubSearch(keyword)
-  let url = 'https://github.com/search?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenStackOverflowSearch(keyword)
-  let url = 'https://stackoverflow.com/search?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-
-function! OpenNpmSearch(keyword)
-  let url = 'https://npmjs.com/search?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenWikipediaSearch(keyword)
-  let url = 'http://wikipedia.com/w/'.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenRedditSearch(keyword)
-  let url = 'https://www.reddit.com/search/?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenThesaurusSearch(keyword)
-  let url = 'https://www.thesaurus.com/browse/'.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
+function! OpenSearch(engine, keyword)
+    if has_key(s:engines, a:engine)
+        let url = s:engines[a:engine] . a:keyword
+        exec '!'.g:vsw_open_command.' "'.url.'"'
+    endif
 endfunction
 
 " Commands
-command! -nargs=1 OpenDuckduckGoSearch call OpenDuckduckGoSearch(<args>)
-command! -nargs=1 OpenGoogleSearch call OpenGoogleSearch(<args>)
-command! -nargs=1 OpenGithubSearch call OpenGithubSearch(<args>)
-command! -nargs=1 OpenStackOverflowSearch call OpenStackOverflowSearch(<args>)
-command! -nargs=1 OpenNpmSearch call OpenNpmSearch(<args>)
-command! -nargs=1 OpenWikipediaSearch call OpenWikipediaSearch(<args>)
-command! -nargs=1 OpenRedditSearch call OpenRedditSearch(<args>)
-command! -nargs=1 OpenThesaurusSearch call OpenThesaurusSearch(<args>)
+command! -nargs=1 OpenDuckduckGoSearch      call OpenSearch("duckduckgo",<args>)
+command! -nargs=1 OpenGoogleSearch          call OpenSearch("google",<args>)
+command! -nargs=1 OpenGithubSearch          call OpenSearch("github",<args>)
+command! -nargs=1 OpenStackOverflowSearch   call OpenSearch("stackoverflow",<args>)
+command! -nargs=1 OpenNpmSearch             call OpenSearch("npm",<args>)
+command! -nargs=1 OpenWikipediaSearch       call OpenSearch("wikipedia",<args>)
+command! -nargs=1 OpenRedditSearch          call OpenSearch("reddit",<args>)
+command! -nargs=1 OpenThesaurusSearch       call OpenSearch("thesaurus",<args>)
+command! -nargs=1 OpenDictioraySearch       call OpenSearch("dictionary",<args>)
