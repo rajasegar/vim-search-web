@@ -3,7 +3,7 @@
 " Version: 0.0.3
 
 " add new engines here to automatically generate a command and a keymap
-" :call Open{Engine}Search 
+" :Open{Engine}Search 
 " <leader>s{FirstLetterOfEngine}
 let s:engines = {
  \ 'Duckduckgo':    'https://duckduckgo.com/?q=',
@@ -15,6 +15,7 @@ let s:engines = {
  \ "Reddit":        'https://www.reddit.com/search/?q=',
  \ "Thesaurus":     'https://www.thesaurus.com/browse/',
  \ "Dictionary":    'http://www.learnersdictionary.com/definition/',
+ \ "Youtube":       'https://www.youtube.com/results?search_query=',
  \ }
 
 
