@@ -3,15 +3,34 @@
 " Version: 0.0.3
 
 
+" add new engines here to automatically generate a command and a keymap
+" :Open{Engine}Search 
+" <leader>s{FirstLetterOfEngine}
+let s:engines = {
+ \ 'Duckduckgo':    'https://duckduckgo.com/?q=',
+ \ "Google":        'https://google.com/search?q=',
+ \ "Github":        'https://github.com/search?q=',
+ \ "Stackoverflow": 'https://stackoverflow.com/search?q=',
+ \ "Npm":           'https://npmjs.com/search?q=',
+ \ "Wikipedia":     'http://wikipedia.com/w/',
+ \ "Reddit":        'https://www.reddit.com/search/?q=',
+ \ "Thesaurus":     'https://www.thesaurus.com/browse/',
+ \ "Dictionary":    'http://www.learnersdictionary.com/definition/',
+ \ "Youtube":       'https://www.youtube.com/results?search_query=',
+ \ }
+
+
 " Mappings
-nnoremap <leader>sd :call OpenDuckduckGoSearch(expand('<cword>')) <CR>
-nnoremap <leader>sg :call OpenGoogleSearch(expand('<cword>')) <CR>
-nnoremap <leader>sgi :call OpenGithubSearch(expand('<cword>')) <CR>
-nnoremap <leader>sn :call OpenNpmSearch(expand('<cword>')) <CR>
-nnoremap <leader>sr :call OpenRedditSearch(expand('<cword>')) <CR>
-nnoremap <leader>ss :call OpenStackOverflowSearch(expand('<cword>')) <CR>
-nnoremap <leader>st :call OpenThesaurusSearch(expand('<cword>')) <CR>
-nnoremap <leader>sw :call OpenWikipediaSearch(expand('<cword>')) <CR>
+" single letter mappings - automatic, dont touch
+for engine in keys(s:engines)
+    execute "nnoremap <leader>s".tolower(engine[0:0])." :call OpenSearch('".engine."',expand('<cword>')) <CR>"
+    execute "vnoremap <leader>s".tolower(engine[0:0])." :call OpenSearch('".engine."',GetVisualSelection()) <CR>"
+endfor
+" double letter mappings (for 2 searches that start with the same letter)
+nnoremap <leader>sgi    :call OpenSearch("Github",expand('<cword>')) <CR>
+nnoremap <leader>sld    :call OpenSearch("Dictionary",expand('<cword>')) <CR>
+vnoremap <leader>sgi    :call OpenSearch("Github",GetVisualSelection()) <CR>
+vnoremap <leader>sld    :call OpenSearch("Dictionary",GetVisualSelection()) <CR>
 
 if exists("g:loaded_vim_search_web") || &cp || v:version < 700
   finish
@@ -33,53 +52,28 @@ endif
 
 
 " Functions
-function! OpenDuckduckGoSearch(keyword)
-  let url = 'https://duckduckgo.com/?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
+function! OpenSearch(engine, keyword)
+    if has_key(s:engines, a:engine)
+        let url = s:engines[a:engine] . a:keyword
+        exec '!'.g:vsw_open_command.' "'.url.'"'
+    endif
 endfunction
 
-function! OpenGoogleSearch(keyword)
-  let url = 'https://google.com/search?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenGithubSearch(keyword)
-  let url = 'https://github.com/search?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenStackOverflowSearch(keyword)
-  let url = 'https://stackoverflow.com/search?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-
-function! OpenNpmSearch(keyword)
-  let url = 'https://npmjs.com/search?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenWikipediaSearch(keyword)
-  let url = 'http://wikipedia.com/w/'.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenRedditSearch(keyword)
-  let url = 'https://www.reddit.com/search/?q='.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
-endfunction
-
-function! OpenThesaurusSearch(keyword)
-  let url = 'https://www.thesaurus.com/browse/'.a:keyword
-  exec '!'.g:vsw_open_command.' "'.url.'"'
+" this is from stackoverflow. i dont know why it works, but it does
+function! GetVisualSelection()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
 endfunction
 
 " Commands
-command! -nargs=1 OpenDuckduckGoSearch call OpenDuckduckGoSearch(<args>)
-command! -nargs=1 OpenGoogleSearch call OpenGoogleSearch(<args>)
-command! -nargs=1 OpenGithubSearch call OpenGithubSearch(<args>)
-command! -nargs=1 OpenStackOverflowSearch call OpenStackOverflowSearch(<args>)
-command! -nargs=1 OpenNpmSearch call OpenNpmSearch(<args>)
-command! -nargs=1 OpenWikipediaSearch call OpenWikipediaSearch(<args>)
-command! -nargs=1 OpenRedditSearch call OpenRedditSearch(<args>)
-command! -nargs=1 OpenThesaurusSearch call OpenThesaurusSearch(<args>)
+for engine in keys(s:engines)
+    execute "command! -nargs=1 Open".engine."Search call OpenSearch('".engine."',<args>)"
+endfor
