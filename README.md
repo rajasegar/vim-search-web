@@ -33,6 +33,15 @@ That's all, now a separate browser window will open with your search results.
 Just select any word about which you want to search and use
 the key binding `<Leader>sg`.
 
+### Ex mode
+
+You can specify the supported search engines as the first parameter and
+then followed by the keyword.
+
+```sh
+:OpenSearch("Google", "hello world")
+```
+
 ## Key Bindings
 - [Leader]sdi  => Dictionary Search
 - [Leader]sd   => DuckduckGo Search

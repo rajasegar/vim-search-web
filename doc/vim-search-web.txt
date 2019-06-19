@@ -17,17 +17,9 @@ COMMANDS                                        *vim-search-web-commands*
 These commands are local to the buffers in which they work (generally, buffers
 that are part of Git repositories).
 
-                                        *vim-search-web-:OpenGoogleSearch*
-:OpenGoogleSearch [args]              Search using Google
+                                        *vim-search-web-:OpenSearch*
+:OpenSearch [args]              Search using Google OpenSearch("Google", "hello")
 
-                                        *vim-search-web-:OpenGithubSearch*
-:OpenGitHubSearch [args]              Search using Github
-
-                                        *vim-search-web-:OpenStackOverflowSearch*
-:OpenStackOverflowSearch [args]              Search using StackOverflow
-
-                                        *vim-search-web-:OpenNpmSearch*
-:OpenNpmSearch [args]              Search using npm
 
 MAPPINGS                                        *vim-search-web-mappings*
 
