@@ -1,6 +1,6 @@
 " vim-search-web.vim - Search keywords in vim from various sources
 " Maintainer: Rajasegar Chandran <rajasegar.c@gmail.com>
-" Version: 0.0.3
+" Version: 0.0.4
 
 
 " add new engines here to automatically generate a command and a keymap
@@ -28,9 +28,9 @@ for engine in keys(s:engines)
 endfor
 " double letter mappings (for 2 searches that start with the same letter)
 nnoremap <leader>sgi    :call OpenSearch("Github",expand('<cword>')) <CR>
-nnoremap <leader>sld    :call OpenSearch("Dictionary",expand('<cword>')) <CR>
+nnoremap <leader>sdi   :call OpenSearch("Dictionary",expand('<cword>')) <CR>
 vnoremap <leader>sgi    :call OpenSearch("Github",GetVisualSelection()) <CR>
-vnoremap <leader>sld    :call OpenSearch("Dictionary",GetVisualSelection()) <CR>
+vnoremap <leader>sdi    :call OpenSearch("Dictionary",GetVisualSelection()) <CR>
 
 if exists("g:loaded_vim_search_web") || &cp || v:version < 700
   finish

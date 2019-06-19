@@ -22,21 +22,28 @@ Plugin 'rajasegar/vim-search-web'
 
 
 ## Usage
+
+### Normal mode
 Just place the cursor on any word about which you want to search and use
 the key binding `<Leader>sg`.
 
 That's all, now a separate browser window will open with your search results.
 
+### Visual mode
+Just select any word about which you want to search and use
+the key binding `<Leader>sg`.
 
 ## Key Bindings
-- [Leader]sd  => DuckduckGo Search
-- [Leader]sg  => Google Search
-- [Leader]sgi => Github Search
-- [Leader]ss  => StackOverflow Search
-- [Leader]sn  => npm Search
-- [Leader]sw  => Wikipedia Search
-- [Leader]sr  => reddit Search
-- [Leader]st  => Thesaurus Search
+- [Leader]sdi  => Dictionary Search
+- [Leader]sd   => DuckduckGo Search
+- [Leader]sgi  => Github Search
+- [Leader]sg   => Google Search
+- [Leader]sn   => npm Search
+- [Leader]sr   => reddit Search
+- [Leader]ss   => StackOverflow Search
+- [Leader]st   => Thesaurus Search
+- [Leader]sw   => Wikipedia Search
+- [Leader]sy   => Youtube Search
 
 
 ## Configuration

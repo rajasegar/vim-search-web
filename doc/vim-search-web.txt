@@ -35,17 +35,36 @@ MAPPINGS                                        *vim-search-web-mappings*
                                                 *vim-search-web-global-mappings*
 Global mappings ~
 
-                                                *vim-search-web_LEADER_sw
-<Leader>sw              Google Search 
+                                                *vim-search-web_LEADER_sd
+<Leader>sd              DuckDuckGo Search
+
+                                                *vim-search-web_LEADER_sdi
+
+<Leader>sdi             Learner's Dictionary Search
 
                                                 *vim-search-web_LEADER_sg
-<Leader>sg              Github Search
+<Leader>sg              Google Search 
+
+                                                *vim-search-web_LEADER_sgi
+<Leader>sgi             Github Search
 
                                                 *vim-search-web_LEADER_ss
 <Leader>ss              StackOverflow Search
 
                                                 *vim-search-web_LEADER_sn
 <Leader>sn              npm Search
+
+                                                *vim-search-web_LEADER_sw
+<Leader>sw              Wikipedia Search
+
+                                                *vim-search-web_LEADER_sr
+<Leader>sr              Reddit Search
+
+                                                *vim-search-web_LEADER_st
+<Leader>st              Thesaurus Search
+
+                                                *vim-search-web_LEADER_sy
+<Leader>sy              Youtube Search
 
 ABOUT                                           *vim-search-web-about*
 
