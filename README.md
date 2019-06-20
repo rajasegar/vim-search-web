@@ -80,3 +80,4 @@ So if you want to include hypens also in your search keywords, just add them(tem
 ## Other Similar plugins
  - https://github.com/szw/vim-g
  - https://github.com/mickaobrien/vim-stackoverflow
+ - [vim-search-me](https://github.com/rajasegar/vim-search-web)
